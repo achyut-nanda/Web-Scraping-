@@ -20,12 +20,10 @@ try:
 except AttributeError:
     totalPages = 1
 
-print(f"Total Pages Found: {totalPages}")
-
 # Start scraping data from all pages
 for i in range(1,totalPages + 1):
     completeUrl = url + str(i)
-    r = requests.get(completeUrl)
+    r = requests.get(completeUrl,headers=headers)
     soup = BeautifulSoup(r.text, "lxml")
     box = soup.find("div", class_="QSCKDh dLgFEE")
     
